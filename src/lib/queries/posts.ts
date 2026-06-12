@@ -2,7 +2,7 @@
  * GraphQL Queries for Blog Posts
  */
 
-import { gql } from '@apollo/client';
+import gql from 'graphql-tag';
 import {
   POST_FRAGMENT,
   POST_FRAGMENT_MINIMAL,

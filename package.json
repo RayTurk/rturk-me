@@ -12,7 +12,6 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@apollo/client": "^4.2.3",
     "graphql": "^16.14.2",
     "graphql-tag": "^2.12.6",
     "next": "16.2.9",

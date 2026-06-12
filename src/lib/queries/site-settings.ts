@@ -2,7 +2,7 @@
  * GraphQL Queries for Site Settings and Menus
  */
 
-import { gql } from '@apollo/client';
+import gql from 'graphql-tag';
 import { MENU_ITEM_FRAGMENT } from './fragments';
 
 // ============================================================================

@@ -2,7 +2,7 @@
  * GraphQL Queries for Projects
  */
 
-import { gql } from '@apollo/client';
+import gql from 'graphql-tag';
 import {
   PROJECT_FRAGMENT,
   PROJECT_FRAGMENT_MINIMAL,

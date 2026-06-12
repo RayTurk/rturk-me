@@ -3,7 +3,7 @@
  * Used across multiple queries to maintain consistency and reduce duplication
  */
 
-import { gql } from '@apollo/client';
+import gql from 'graphql-tag';
 
 // ============================================================================
 // MEDIA FRAGMENTS
