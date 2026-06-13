@@ -25,7 +25,7 @@ export default function ColophonPage() {
           <li><strong>Data:</strong> Headless WordPress · WPGraphQL · a small typed fetch client (no Apollo)</li>
           <li><strong>Motion:</strong> a hand-rolled canvas hero · the Motion library for micro-interactions</li>
           <li><strong>Content:</strong> Shiki for server-side syntax highlighting · automatic tables of contents</li>
-          <li><strong>Hosting:</strong> Netlify, with edge functions for ISR and image optimization</li>
+          <li><strong>Hosting:</strong> Netlify, with edge functions handling ISR revalidation</li>
         </ul>
 
         <h2>Type</h2>

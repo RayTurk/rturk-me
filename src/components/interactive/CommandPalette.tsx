@@ -35,8 +35,15 @@ export default function CommandPalette() {
         setOpen((o) => !o);
       }
     }
+    function onToggle() {
+      setOpen((o) => !o);
+    }
     document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
+    document.addEventListener('command-palette:toggle', onToggle);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('command-palette:toggle', onToggle);
+    };
   }, []);
 
   function go(href: string) {
