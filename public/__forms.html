@@ -2,19 +2,14 @@
 <html>
   <head></head>
   <body>
-    <form name="contact" data-netlify="true" hidden>
+    <form name="contact" data-netlify="true" data-netlify-honeypot="honeypot" hidden>
       <input type="hidden" name="form-name" value="contact" />
       <input name="name" type="text" />
       <input name="email" type="email" />
       <input name="service" type="text" />
       <input name="budget" type="text" />
       <textarea name="message"></textarea>
-    </form>
-    <form name="audit" data-netlify="true" hidden>
-      <input type="hidden" name="form-name" value="audit" />
-      <input name="name" type="text" />
-      <input name="email" type="email" />
-      <input name="website" type="text" />
+      <input name="honeypot" type="text" />
     </form>
   </body>
 </html>
