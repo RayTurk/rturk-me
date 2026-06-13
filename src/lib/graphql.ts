@@ -19,6 +19,11 @@ export interface FetchGraphQLOptions {
    * ISR window in seconds. Defaults to 3600 so pages are statically generated
    * and revalidated hourly (the /api/revalidate webhook also purges on demand).
    * Pass `false` to opt a request out of caching entirely (mutations, preview).
+   *
+   * Note: this controls the Next data cache for the fetch response, which is
+   * separate from a page segment's `export const revalidate`. A page that wants
+   * a shorter window than 3600s must pass `{ revalidate: N }` here to match its
+   * segment config, or the response stays cached for up to 3600s regardless.
    */
   revalidate?: number | false;
 }
