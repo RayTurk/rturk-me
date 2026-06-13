@@ -4,6 +4,7 @@ import RevealOnScroll from '@/components/animations/RevealOnScroll';
 import Hero from '@/components/interactive/Hero';
 import MagneticButton from '@/components/interactive/MagneticButton';
 import TiltCard from '@/components/interactive/TiltCard';
+import Pipeline from '@/components/home/Pipeline';
 
 export const revalidate = 3600;
 
@@ -36,10 +37,13 @@ export default async function HomePage() {
         </section>
       </RevealOnScroll>
 
+      {/* Under the Hood */}
+      <Pipeline />
+
       {/* Writing */}
       <RevealOnScroll>
         <section className="border-t border-hairline py-16">
-          <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">02 — Writing</h2>
+          <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">03 — Writing</h2>
           <ul className="mt-6 divide-y divide-hairline">
             {posts.map((post) => (
               <li key={post.slug}>
