@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Archivo, JetBrains_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 const archivo = Archivo({ subsets: ['latin'], variable: '--font-archivo' });
 const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains' });
@@ -23,7 +25,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${archivo.variable} ${jetbrains.variable} ${clash.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <Header />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
