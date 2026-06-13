@@ -1,29 +1,31 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 
 const QUERY = '(prefers-reduced-motion: reduce)';
 
-function getInitialValue(): boolean {
-  if (typeof window === 'undefined' || !window.matchMedia) return false;
+function subscribe(onChange: () => void): () => void {
+  if (typeof window === 'undefined' || !window.matchMedia) return () => {};
+  const mql = window.matchMedia(QUERY);
+  mql.addEventListener('change', onChange);
+  return () => mql.removeEventListener('change', onChange);
+}
+
+function getSnapshot(): boolean {
   return window.matchMedia(QUERY).matches;
 }
 
+/** Server snapshot is always false — motion is enabled until the client says otherwise. */
+function getServerSnapshot(): boolean {
+  return false;
+}
+
 /**
- * Tracks the user's reduced-motion preference. Returns true when the user
- * has requested reduced motion. SSR-safe: starts false on server, reads
- * matchMedia on first client render, then subscribes to changes.
+ * Tracks the user's reduced-motion preference. Returns true when the user has
+ * requested reduced motion. SSR-safe via useSyncExternalStore: the server
+ * renders `false`, the client subscribes to the media query — no hydration
+ * mismatch, no setState-in-effect.
  */
 export function useReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(getInitialValue);
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || !window.matchMedia) return;
-    const mql = window.matchMedia(QUERY);
-    const onChange = (e: MediaQueryListEvent) => setReduced(e.matches);
-    mql.addEventListener('change', onChange);
-    return () => mql.removeEventListener('change', onChange);
-  }, []);
-
-  return reduced;
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
