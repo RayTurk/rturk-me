@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getFeaturedProjects, getRecentPosts } from '@/lib/api';
 import RevealOnScroll from '@/components/animations/RevealOnScroll';
+import Hero from '@/components/interactive/Hero';
 
 export const revalidate = 3600;
 
@@ -9,21 +10,7 @@ export default async function HomePage() {
 
   return (
     <div className="mx-auto max-w-5xl px-6">
-      {/* Hero — static gradient version; interactive canvas lands in Plan 2 */}
-      <section className="relative overflow-hidden py-24">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-20 right-0 h-72 w-72 rounded-full opacity-60"
-          style={{ background: 'radial-gradient(circle, rgba(34,211,238,0.15), transparent 65%)' }}
-        />
-        <p className="font-mono text-sm text-ion">~/cleveland-oh · full-stack developer</p>
-        <h1 className="mt-4 font-display text-5xl font-semibold leading-tight tracking-tight md:text-6xl">
-          Ray Turk builds fast, headless, animated web.
-        </h1>
-        <p className="mt-4 max-w-xl text-lg text-muted">
-          WordPress as the engine, Next.js as the face — with the engineering on display.
-        </p>
-      </section>
+      <Hero />
 
       {/* Selected work */}
       <RevealOnScroll>
