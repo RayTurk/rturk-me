@@ -8,6 +8,9 @@ Headless WordPress (cms.rturk.me, WPGraphQL) → Next.js 16 (App Router, RSC, IS
 
 - Next.js 16 · React 19 · TypeScript · Tailwind v4
 - Typed data layer: fetch-based GraphQL client (GraphQL Codegen wired, pending CMS introspection)
+- Motion: hand-rolled canvas hero · Motion library micro-interactions · native view transitions (hard nav)
+- Content: Shiki syntax highlighting · automatic tables of contents · ⌘K command palette
+- Accessibility: every interaction respects `prefers-reduced-motion`
 - Vitest + Testing Library
 - Type: Clash Display · Archivo · JetBrains Mono (self-hosted)
 
