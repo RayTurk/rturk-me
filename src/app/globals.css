@@ -38,6 +38,10 @@ body {
   }
 }
 
+/* Native cross-document (hard navigation) view transitions. App Router soft
+ * navigations won't cross-fade until React ships a stable <ViewTransition>
+ * (the experimental.viewTransition flag in next.config is on, ready for it).
+ * The reduced-motion guard above disables these for opt-out users. */
 @view-transition {
   navigation: auto;
 }
