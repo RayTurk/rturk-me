@@ -13,6 +13,7 @@
     "codegen": "node --env-file=.env.local ./node_modules/.bin/graphql-codegen --config codegen.ts"
   },
   "dependencies": {
+    "cmdk": "^1.1.1",
     "graphql": "^16.14.2",
     "graphql-tag": "^2.12.6",
     "motion": "^12.40.0",

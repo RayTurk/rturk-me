@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import CommandPalette from '@/components/interactive/CommandPalette';
 
 const archivo = Archivo({ subsets: ['latin'], variable: '--font-archivo' });
 const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains' });
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${archivo.variable} ${jetbrains.variable} ${clash.variable}`}>
       <body className="font-sans antialiased">
+        <CommandPalette />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

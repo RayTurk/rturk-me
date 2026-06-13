@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import CommandKHint from './CommandKHint';
 
 const nav = [
   { href: '/work', label: 'work' },
@@ -25,6 +26,7 @@ export default function Header() {
           >
             contact
           </Link>
+          <CommandKHint />
         </nav>
       </div>
     </header>
