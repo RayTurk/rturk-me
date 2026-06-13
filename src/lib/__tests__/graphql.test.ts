@@ -31,6 +31,29 @@ describe('fetchGraphQL', () => {
     expect(body.variables).toEqual({ first: 5 });
   });
 
+  it('defaults to ISR caching (next.revalidate), not no-store', async () => {
+    mockFetchOnce({ data: {} });
+    await fetchGraphQL(QUERY);
+    const [, init] = (fetch as ReturnType<typeof vi.fn>).mock.calls[0];
+    expect(init.next).toEqual({ revalidate: 3600 });
+    expect(init.cache).toBeUndefined();
+  });
+
+  it('honors an explicit revalidate window', async () => {
+    mockFetchOnce({ data: {} });
+    await fetchGraphQL(QUERY, undefined, { revalidate: 60 });
+    const [, init] = (fetch as ReturnType<typeof vi.fn>).mock.calls[0];
+    expect(init.next).toEqual({ revalidate: 60 });
+  });
+
+  it('opts out of caching when revalidate is false', async () => {
+    mockFetchOnce({ data: {} });
+    await fetchGraphQL(QUERY, undefined, { revalidate: false });
+    const [, init] = (fetch as ReturnType<typeof vi.fn>).mock.calls[0];
+    expect(init.cache).toBe('no-store');
+    expect(init.next).toBeUndefined();
+  });
+
   it('throws GraphQLRequestError on GraphQL errors', async () => {
     mockFetchOnce({ errors: [{ message: 'Field "ping" not found' }] });
     await expect(fetchGraphQL(QUERY)).rejects.toThrow(GraphQLRequestError);

@@ -1,6 +1,6 @@
 /**
  * Fetch-based GraphQL client for SSG/RSC.
- * Replaces Apollo: no client cache wanted — Next's data layer owns caching.
+ * Replaces Apollo — Next's data cache owns caching, with ISR by default.
  */
 import { print } from 'graphql';
 import type { DocumentNode } from 'graphql';
@@ -14,14 +14,26 @@ export class GraphQLRequestError extends Error {
   }
 }
 
+export interface FetchGraphQLOptions {
+  /**
+   * ISR window in seconds. Defaults to 3600 so pages are statically generated
+   * and revalidated hourly (the /api/revalidate webhook also purges on demand).
+   * Pass `false` to opt a request out of caching entirely (mutations, preview).
+   */
+  revalidate?: number | false;
+}
+
 export async function fetchGraphQL<TData = unknown>(
   document: DocumentNode,
-  variables?: Record<string, unknown>
+  variables?: Record<string, unknown>,
+  options?: FetchGraphQLOptions
 ): Promise<TData> {
   const endpoint = process.env.WORDPRESS_GRAPHQL_ENDPOINT;
   if (!endpoint) {
     throw new GraphQLRequestError('WORDPRESS_GRAPHQL_ENDPOINT environment variable is not set');
   }
+
+  const revalidate = options?.revalidate ?? 3600;
 
   const res = await fetch(endpoint, {
     method: 'POST',
@@ -32,7 +44,9 @@ export async function fetchGraphQL<TData = unknown>(
       }),
     },
     body: JSON.stringify({ query: print(document), variables }),
-    cache: 'no-store',
+    // POST fetches are uncached by default in Next; opt into the data cache so
+    // routes stay static + ISR. `revalidate: false` forces a fresh request.
+    ...(revalidate === false ? { cache: 'no-store' as const } : { next: { revalidate } }),
   });
 
   if (!res.ok) {
