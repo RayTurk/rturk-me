@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getFeaturedProjects, getRecentPosts } from '@/lib/api';
 import RevealOnScroll from '@/components/animations/RevealOnScroll';
 import Hero from '@/components/interactive/Hero';
+import MagneticButton from '@/components/interactive/MagneticButton';
 
 export const revalidate = 3600;
 
@@ -61,9 +62,9 @@ export default async function HomePage() {
               Full-stack developer at Neon Goldfish, building headless WordPress and Next.js sites.
               <Link href="/about" className="ml-2 text-ion">more →</Link>
             </p>
-            <Link href="/contact" className="rounded-lg bg-ion px-5 py-2.5 font-semibold text-void hover:opacity-90">
+            <MagneticButton href="/contact" className="inline-block rounded-lg bg-ion px-5 py-2.5 font-semibold text-void hover:opacity-90">
               Get in touch
-            </Link>
+            </MagneticButton>
           </div>
         </section>
       </RevealOnScroll>
