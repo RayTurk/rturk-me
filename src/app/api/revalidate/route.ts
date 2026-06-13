@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
 
     // Handle payload from WordPress ISR webhook plugin
     // Plugin sends: { type, post_id, post_type, paths, timestamp }
-    const { paths, post_type, type: eventType } = body;
+    const { paths } = body;
 
     // If paths array is provided (from webhook plugin), revalidate each path
     if (paths && Array.isArray(paths)) {

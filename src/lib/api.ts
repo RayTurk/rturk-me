@@ -3,6 +3,11 @@
  * Wraps GraphQL queries and provides typed data
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any --
+ * GraphQL responses are read as `any` until codegen is unblocked (WPGraphQL
+ * introspection is disabled on prod). See codegen.ts. Once generated types
+ * land, replace fetchGraphQL<any> with the typed operations and drop this. */
+
 import { fetchGraphQL } from './graphql';
 import {
   GET_ALL_PROJECTS,
@@ -31,7 +36,6 @@ import {
   BlogPost,
   MenuItem,
   SiteSettings,
-  TaxonomyTerm,
   PageInfo,
 } from '@/types/wordpress';
 import { FEATURED_PROJECTS_COUNT, RECENT_POSTS_COUNT } from './constants';

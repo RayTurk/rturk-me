@@ -215,7 +215,7 @@ export interface APIResponse<T> {
   data: T;
   errors?: Array<{
     message: string;
-    extensions?: Record<string, any>;
+    extensions?: Record<string, unknown>;
   }>;
 }
 
