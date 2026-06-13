@@ -1,65 +1,78 @@
-import Image from "next/image";
+import Link from 'next/link';
+import { getFeaturedProjects, getRecentPosts } from '@/lib/api';
 
-export default function Home() {
+export const revalidate = 3600;
+
+export default async function HomePage() {
+  const [projects, posts] = await Promise.all([getFeaturedProjects(), getRecentPosts(3)]);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="mx-auto max-w-5xl px-6">
+      {/* Hero — static gradient version; interactive canvas lands in Plan 2 */}
+      <section className="relative overflow-hidden py-24">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-20 right-0 h-72 w-72 rounded-full opacity-60"
+          style={{ background: 'radial-gradient(circle, rgba(34,211,238,0.15), transparent 65%)' }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+        <p className="font-mono text-sm text-ion">~/cleveland-oh · full-stack developer</p>
+        <h1 className="mt-4 font-display text-5xl font-semibold leading-tight tracking-tight md:text-6xl">
+          Ray Turk builds fast, headless, animated web.
+        </h1>
+        <p className="mt-4 max-w-xl text-lg text-muted">
+          WordPress as the engine, Next.js as the face — with the engineering on display.
+        </p>
+      </section>
+
+      {/* Selected work */}
+      <section className="border-t border-hairline py-16">
+        <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">01 — Selected Work</h2>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {projects.map((project) => (
+            <Link
+              key={project.slug}
+              href={`/work/${project.slug}`}
+              className="rounded-xl border border-hairline bg-panel p-6 transition-colors hover:border-ion/40"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              <p className="font-mono text-xs text-ion">case-study/{project.slug}</p>
+              <h3 className="mt-2 font-display text-xl font-semibold">{project.title}</h3>
+            </Link>
+          ))}
+        </div>
+        <Link href="/work" className="mt-6 inline-block font-mono text-sm text-muted hover:text-ion">
+          all work →
+        </Link>
+      </section>
+
+      {/* Writing */}
+      <section className="border-t border-hairline py-16">
+        <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">02 — Writing</h2>
+        <ul className="mt-6 divide-y divide-hairline">
+          {posts.map((post) => (
+            <li key={post.slug}>
+              <Link href={`/writing/${post.slug}`} className="flex items-baseline justify-between gap-4 py-4 hover:text-ion">
+                <span>{post.title}</span>
+                <span className="shrink-0 font-mono text-xs text-faint">
+                  {post.date ? new Date(post.date).toISOString().slice(0, 10) : ''}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="border-t border-hairline py-16">
+        <div className="flex flex-wrap items-center justify-between gap-6">
+          <p className="max-w-md text-muted">
+            Full-stack developer at Neon Goldfish, building headless WordPress and Next.js sites.
+            <Link href="/about" className="ml-2 text-ion">more →</Link>
           </p>
+          <Link href="/contact" className="rounded-lg bg-ion px-5 py-2.5 font-semibold text-void hover:opacity-90">
+            Get in touch
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
     </div>
   );
 }
