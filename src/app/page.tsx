@@ -3,6 +3,7 @@ import { getFeaturedProjects, getRecentPosts } from '@/lib/api';
 import RevealOnScroll from '@/components/animations/RevealOnScroll';
 import Hero from '@/components/interactive/Hero';
 import MagneticButton from '@/components/interactive/MagneticButton';
+import TiltCard from '@/components/interactive/TiltCard';
 
 export const revalidate = 3600;
 
@@ -19,14 +20,14 @@ export default async function HomePage() {
           <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">01 — Selected Work</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {projects.map((project) => (
-              <Link
+              <TiltCard
                 key={project.slug}
                 href={`/work/${project.slug}`}
-                className="rounded-xl border border-hairline bg-panel p-6 transition-colors hover:border-ion/40"
+                className="block rounded-xl border border-hairline bg-panel p-6 transition-colors hover:border-ion/40"
               >
                 <p className="font-mono text-xs text-ion">case-study/{project.slug}</p>
                 <h3 className="mt-2 font-display text-xl font-semibold">{project.title}</h3>
-              </Link>
+              </TiltCard>
             ))}
           </div>
           <Link href="/work" className="mt-6 inline-block font-mono text-sm text-muted hover:text-ion">
