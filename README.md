@@ -24,7 +24,26 @@ npm run codegen              # types from live WPGraphQL schema (needs introspec
 npm run dev
 ```
 
-`npm test` · `npm run type-check` · `npm run build`
+`npm test` · `npm run type-check` · `npm run build` · `npm run test:e2e`
+
+## SEO & analytics
+
+- JSON-LD: Person + WebSite site-wide; Article on posts; CreativeWork on case studies
+- `sitemap.xml`, `robots.txt`, and an RSS feed at `/feed.xml`
+- Per-route Open Graph images via `next/og`
+- Google Tag Manager loads **only** after cookie consent (`NEXT_PUBLIC_GTM_ID`)
+
+## CI
+
+GitHub Actions runs on every push/PR: lint · type-check · Vitest · build · Playwright smoke · Lighthouse (perf ≥ 0.90, a11y/best-practices/SEO ≥ 0.95). Local Lighthouse on `/` and `/about` scores 100 across the board.
+
+## Going live (ops checklist)
+
+- [ ] Create the Netlify site from this repo; set env vars: `NEXT_PUBLIC_WORDPRESS_URL`, `NEXT_PUBLIC_WP_HOSTNAME`, `WORDPRESS_GRAPHQL_ENDPOINT` (= `https://cms.rturk.me/?graphql`), `NEXT_PUBLIC_SITE_URL` (= `https://rturk.me`), `REVALIDATION_SECRET` (32+ chars), `NEXT_PUBLIC_GTM_ID`, `NEXT_PUBLIC_GITHUB_URL`, `NEXT_PUBLIC_LINKEDIN_URL`.
+- [ ] Enable WPGraphQL introspection (or create an Application Password) → `npm run codegen` → replace `fetchGraphQL<any>` with generated types.
+- [ ] Reconfigure the WP ISR webhook plugin to post `/work/<slug>` and `/writing/<slug>` paths to `/api/revalidate`.
+- [ ] Point the rturk.me domain at the new Netlify site; verify the `netlify.toml` 301s (`/projects`→`/work`, `/blog`→`/writing`).
+- [ ] Submit `https://rturk.me/sitemap.xml` to Google Search Console.
 
 ## Notes
 
