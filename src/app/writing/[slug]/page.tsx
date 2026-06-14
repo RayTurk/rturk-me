@@ -3,6 +3,9 @@ import type { Metadata } from 'next';
 import { getPostBySlug, getAllPostSlugs } from '@/lib/api';
 import { processPostContent } from '@/lib/content';
 import TableOfContents from '@/components/blog/TableOfContents';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { generateArticleSchema } from '@/lib/schema';
+import { SITE_URL } from '@/lib/constants';
 
 export const revalidate = 3600;
 
@@ -25,8 +28,14 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   const { html, toc } = await processPostContent(post.content ?? '');
 
+  const articleSchema = generateArticleSchema(
+    { title: post.title, date: post.date, excerpt: post.excerpt },
+    `${SITE_URL}/writing/${slug}`
+  );
+
   return (
     <div className="mx-auto max-w-5xl px-6 py-16">
+      <JsonLd data={articleSchema} />
       <div className="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12">
         <article className="min-w-0 max-w-3xl">
           <p className="font-mono text-xs text-faint">

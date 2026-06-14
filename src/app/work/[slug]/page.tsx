@@ -1,6 +1,9 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getProjectBySlug, getAllProjectSlugs } from '@/lib/api';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { generateCreativeWorkSchema } from '@/lib/schema';
+import { SITE_URL } from '@/lib/constants';
 
 export const revalidate = 3600;
 
@@ -21,8 +24,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const project = await getProjectBySlug(slug);
   if (!project) notFound();
 
+  const workSchema = generateCreativeWorkSchema(
+    { title: project.title, excerpt: project.excerpt },
+    `${SITE_URL}/work/${slug}`
+  );
+
   return (
     <article className="mx-auto max-w-3xl px-6 py-16">
+      <JsonLd data={workSchema} />
       <p className="font-mono text-xs text-ion">case-study/{project.slug}</p>
       <h1 className="mt-3 font-display text-4xl font-semibold">{project.title}</h1>
       {project.content && (
