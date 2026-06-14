@@ -16,6 +16,24 @@ function escapeXml(s: string): string {
     .replace(/'/g, '&apos;');
 }
 
+const NAMED_ENTITIES: Record<string, string> = {
+  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
+  hellip: '…', mdash: '—', ndash: '–',
+  lsquo: '‘', rsquo: '’', ldquo: '“', rdquo: '”',
+};
+
+/**
+ * Decodes HTML entities (numeric + common named) that WordPress excerpts arrive
+ * pre-encoded with (e.g. `&#8217;`, `&hellip;`). Must run BEFORE escapeXml so
+ * those become real Unicode characters rather than double-escaped `&amp;#8217;`.
+ */
+function decodeEntities(s: string): string {
+  return s
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)))
+    .replace(/&([a-zA-Z]+);/g, (match, name) => NAMED_ENTITIES[name] ?? match);
+}
+
 /** RSS 2.0 feed for the writing section. Pure string builder — no I/O. */
 export function buildRssXml(items: RssItem[], siteUrl: string = SITE_URL): string {
   const now = new Date().toUTCString();
@@ -23,7 +41,9 @@ export function buildRssXml(items: RssItem[], siteUrl: string = SITE_URL): strin
     .map((item) => {
       const link = `${siteUrl}/writing/${item.slug}`;
       const pubDate = item.date ? new Date(item.date).toUTCString() : now;
-      const description = escapeXml((item.excerpt || '').replace(/<[^>]+>/g, '').trim());
+      const description = escapeXml(
+        decodeEntities((item.excerpt || '').replace(/<[^>]+>/g, '')).trim()
+      );
       return [
         '    <item>',
         `      <title>${escapeXml(item.title)}</title>`,

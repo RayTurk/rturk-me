@@ -25,4 +25,15 @@ describe('buildRssXml', () => {
     expect(xml).toContain('First &amp; Best');
     expect(xml).not.toContain('First & Best');
   });
+
+  it('decodes WordPress-encoded entities in excerpts instead of double-escaping', () => {
+    const xml = buildRssXml(
+      [{ title: 'Post', slug: 'p', date: '2026-06-01T00:00:00', excerpt: 'I&#8217;ve done [&hellip;]' }],
+      'https://rturk.me'
+    );
+    // Real Unicode chars in the description, not literal "&amp;#8217;"
+    expect(xml).toContain('<description>I’ve done […]</description>');
+    expect(xml).not.toContain('&amp;#8217;');
+    expect(xml).not.toContain('&amp;hellip;');
+  });
 });
