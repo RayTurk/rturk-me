@@ -4,7 +4,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import CommandPalette from '@/components/interactive/CommandPalette';
+import CommandPaletteLoader from '@/components/interactive/CommandPaletteLoader';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { generatePersonSchema, generateWebSiteSchema } from '@/lib/schema';
 import ConsentBanner from '@/components/consent/ConsentBanner';
@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${archivo.variable} ${jetbrains.variable} ${clash.variable}`}>
       <body className="font-sans antialiased">
         <JsonLd data={[generatePersonSchema(), generateWebSiteSchema()]} />
-        <CommandPalette />
+        <CommandPaletteLoader />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
