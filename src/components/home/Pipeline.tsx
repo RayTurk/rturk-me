@@ -54,7 +54,7 @@ export default function Pipeline() {
       <p className="mt-6 max-w-xl text-sm text-muted">
         WordPress stays the editing experience Ray knows; everything a visitor
         touches is a statically-generated, incrementally-revalidated Next.js app.
-        <a href="/colophon" className="ml-1 text-ion hover:underline">
+        <a href="/colophon" className="ml-1 text-ion underline underline-offset-2 decoration-ion/50 hover:decoration-ion">
           How this site is built →
         </a>
       </p>
