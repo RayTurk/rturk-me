@@ -15,7 +15,7 @@ const PAGES = [
 
 const LINKS = [
   { label: 'GitHub', href: process.env.NEXT_PUBLIC_GITHUB_URL || 'https://github.com/RayTurk' },
-  { label: 'LinkedIn', href: process.env.NEXT_PUBLIC_LINKEDIN_URL || 'https://www.linkedin.com/in/raymond-turk-cle' },
+  { label: 'LinkedIn', href: process.env.NEXT_PUBLIC_LINKEDIN_URL || 'https://www.linkedin.com/in/raymond-turk-625097137' },
 ];
 
 const EMAIL = 'rturk.me@gmail.com';

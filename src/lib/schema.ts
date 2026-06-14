@@ -7,7 +7,7 @@ import { SITE_URL, SITE_NAME, SITE_AUTHOR } from './constants';
 
 const GITHUB = process.env.NEXT_PUBLIC_GITHUB_URL || 'https://github.com/RayTurk';
 const LINKEDIN =
-  process.env.NEXT_PUBLIC_LINKEDIN_URL || 'https://www.linkedin.com/in/raymond-turk-cle';
+  process.env.NEXT_PUBLIC_LINKEDIN_URL || 'https://www.linkedin.com/in/raymond-turk-625097137';
 
 export function generatePersonSchema() {
   return {

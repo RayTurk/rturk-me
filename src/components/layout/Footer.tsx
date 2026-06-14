@@ -3,7 +3,7 @@ import CookiePrefsLink from '@/components/consent/CookiePrefsLink';
 
 const github = process.env.NEXT_PUBLIC_GITHUB_URL || 'https://github.com/RayTurk';
 const linkedin =
-  process.env.NEXT_PUBLIC_LINKEDIN_URL || 'https://www.linkedin.com/in/raymond-turk-cle';
+  process.env.NEXT_PUBLIC_LINKEDIN_URL || 'https://www.linkedin.com/in/raymond-turk-625097137';
 
 export default function Footer() {
   return (
