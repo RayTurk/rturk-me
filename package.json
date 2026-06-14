@@ -11,7 +11,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "codegen": "node --env-file=.env.local ./node_modules/.bin/graphql-codegen --config codegen.ts",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "lhci": "lhci autorun"
   },
   "dependencies": {
     "cmdk": "^1.1.1",
