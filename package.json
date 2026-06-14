@@ -10,7 +10,8 @@
     "type-check": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "codegen": "node --env-file=.env.local ./node_modules/.bin/graphql-codegen --config codegen.ts"
+    "codegen": "node --env-file=.env.local ./node_modules/.bin/graphql-codegen --config codegen.ts",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "cmdk": "^1.1.1",
@@ -28,6 +29,7 @@
     "@graphql-codegen/typescript": "^6.0.2",
     "@graphql-codegen/typescript-operations": "^6.0.3",
     "@netlify/plugin-nextjs": "^5.15.11",
+    "@playwright/test": "^1.60.0",
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.20",
     "@testing-library/jest-dom": "^6.9.1",
