@@ -48,3 +48,6 @@ next-env.d.ts
 
 # lighthouse ci
 /.lighthouseci/
+
+# Codegen output (regenerate with `npm run codegen`; needs WP introspection on)
+/src/lib/generated/

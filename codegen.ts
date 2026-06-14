@@ -15,13 +15,21 @@ const schemaConfig =
       }
     : process.env.WORDPRESS_GRAPHQL_ENDPOINT || 'https://cms.rturk.me/?graphql';
 
+// NOTE: the live WPGraphQL schema is technically invalid — a plugin (SEO/ACF)
+// registers the interface `WithAcfOptionsPageSEODefaults` with a `sEODefaults`
+// field that RootQuery doesn't implement. That breaks the `typescript-operations`
+// plugin (crashes generating per-operation result types), so we emit only the
+// base `typescript` schema types here. Until the WP plugin is fixed, the app
+// keeps using the hand-written types in `src/types/wordpress.ts` + fetchGraphQL<any>.
+// Requires WPGraphQL public introspection enabled and query-depth limit raised/off.
 const config: CodegenConfig = {
   schema: schemaConfig,
   documents: ['src/lib/queries/**/*.ts'],
+  ignoreNoDocuments: true,
   generates: {
     'src/lib/generated/graphql.ts': {
-      plugins: ['typescript', 'typescript-operations'],
-      config: { skipTypename: true, avoidOptionals: false },
+      plugins: ['typescript'],
+      config: { skipTypename: true, avoidOptionals: false, skipDocumentsValidation: true },
     },
   },
 };
