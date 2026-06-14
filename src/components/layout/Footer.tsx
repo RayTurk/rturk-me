@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import CookiePrefsLink from '@/components/consent/CookiePrefsLink';
 
 const github = process.env.NEXT_PUBLIC_GITHUB_URL || 'https://github.com/RayTurk';
 const linkedin =
@@ -13,6 +14,7 @@ export default function Footer() {
           <a href={github} className="hover:text-ion">github</a>
           <a href={linkedin} className="hover:text-ion">linkedin</a>
           <Link href="/colophon" className="hover:text-ion">colophon</Link>
+          <CookiePrefsLink />
         </div>
       </div>
     </footer>

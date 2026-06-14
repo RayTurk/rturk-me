@@ -7,6 +7,7 @@ import Footer from '@/components/layout/Footer';
 import CommandPalette from '@/components/interactive/CommandPalette';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { generatePersonSchema, generateWebSiteSchema } from '@/lib/schema';
+import ConsentBanner from '@/components/consent/ConsentBanner';
 
 const archivo = Archivo({ subsets: ['latin'], variable: '--font-archivo' });
 const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains' });
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        <ConsentBanner />
       </body>
     </html>
   );
