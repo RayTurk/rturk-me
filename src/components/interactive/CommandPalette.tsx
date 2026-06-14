@@ -60,9 +60,13 @@ export default function CommandPalette() {
       open={open}
       onOpenChange={setOpen}
       label="Command palette"
-      className="fixed inset-0 z-[100] flex items-start justify-center bg-void/70 p-4 pt-[18vh] backdrop-blur"
+      // Backdrop on the overlay, viewport-filling centering on the Radix
+      // Dialog.Content (so it has a real bounding box for focus/a11y), and the
+      // panel box on the cmdk root itself.
+      overlayClassName="fixed inset-0 z-[100] bg-void/70 backdrop-blur"
+      contentClassName="fixed inset-0 z-[100] flex items-start justify-center p-4 pt-[18vh]"
+      className="h-fit w-full max-w-lg overflow-hidden rounded-xl border border-hairline bg-panel shadow-2xl"
     >
-      <div className="w-full max-w-lg overflow-hidden rounded-xl border border-hairline bg-panel shadow-2xl">
         <Command.Input
           placeholder="Type a command or search…"
           className="w-full border-b border-hairline bg-transparent px-4 py-3 font-mono text-sm text-signal outline-none placeholder:text-faint"
@@ -103,7 +107,6 @@ export default function CommandPalette() {
             </Command.Item>
           </Command.Group>
         </Command.List>
-      </div>
     </Command.Dialog>
   );
 }
