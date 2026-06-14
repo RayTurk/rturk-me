@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Link from 'next/link';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 const CONSENT_KEY = 'cookie-consent';
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || '';
@@ -21,6 +22,7 @@ function injectGTM() {
  *  "cookies" link re-opens it via the `open-consent-banner` event. */
 export default function ConsentBanner() {
   const [visible, setVisible] = useState(false);
+  const reduced = useReducedMotion();
 
   useEffect(() => {
     const stored = localStorage.getItem(CONSENT_KEY) as ConsentValue;
@@ -52,10 +54,10 @@ export default function ConsentBanner() {
     <AnimatePresence>
       {visible && (
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
-          transition={{ type: 'spring', stiffness: 260, damping: 28 }}
+          initial={reduced ? { opacity: 0 } : { y: 100, opacity: 0 }}
+          animate={reduced ? { opacity: 1 } : { y: 0, opacity: 1 }}
+          exit={reduced ? { opacity: 0 } : { y: 100, opacity: 0 }}
+          transition={reduced ? { duration: 0.15 } : { type: 'spring', stiffness: 260, damping: 28 }}
           className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6"
           role="dialog"
           aria-label="Cookie consent"
