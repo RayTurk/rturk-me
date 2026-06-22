@@ -51,3 +51,7 @@ next-env.d.ts
 
 # Codegen output (regenerate with `npm run codegen`; needs WP introspection on)
 /src/lib/generated/
+
+# Claude Code worktrees and scratch state
+/.claude/
+.superpowers/
