@@ -5,6 +5,7 @@ import Hero from '@/components/interactive/Hero';
 import BracketButton from '@/components/interactive/BracketButton';
 import TiltCard from '@/components/interactive/TiltCard';
 import Pipeline from '@/components/home/Pipeline';
+import Stats from '@/components/home/Stats';
 
 export const revalidate = 3600;
 
@@ -14,6 +15,7 @@ export default async function HomePage() {
   return (
     <div className="mx-auto max-w-5xl px-6">
       <Hero />
+      <Stats />
 
       {/* Selected work */}
       <RevealOnScroll>
