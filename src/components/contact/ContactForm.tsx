@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import BracketButton from '@/components/interactive/BracketButton';
 
 interface ContactFormState {
   status: 'idle' | 'loading' | 'success' | 'error';
@@ -273,13 +274,13 @@ const ContactForm = () => {
       )}
 
       {/* Submit */}
-      <button
+      <BracketButton
         type="submit"
         disabled={formState.status === 'loading'}
         className="bg-ion text-void font-semibold rounded-lg px-5 py-2.5 hover:opacity-90 disabled:opacity-50 transition-opacity"
       >
         {formState.status === 'loading' ? 'Sending...' : 'Send Message'}
-      </button>
+      </BracketButton>
     </form>
   );
 };

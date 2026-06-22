@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getFeaturedProjects, getRecentPosts } from '@/lib/api';
 import RevealOnScroll from '@/components/animations/RevealOnScroll';
 import Hero from '@/components/interactive/Hero';
-import MagneticButton from '@/components/interactive/MagneticButton';
+import BracketButton from '@/components/interactive/BracketButton';
 import TiltCard from '@/components/interactive/TiltCard';
 import Pipeline from '@/components/home/Pipeline';
 
@@ -67,9 +67,9 @@ export default async function HomePage() {
               Full-stack developer at Neon Goldfish, building headless WordPress and Next.js sites.
               <Link href="/about" className="ml-2 text-ion">more →</Link>
             </p>
-            <MagneticButton href="/contact" className="inline-block rounded-lg bg-ion px-5 py-2.5 font-semibold text-void hover:opacity-90">
+            <BracketButton href="/contact" className="rounded-lg bg-ion px-5 py-2.5 font-semibold text-void hover:opacity-90">
               Get in touch
-            </MagneticButton>
+            </BracketButton>
           </div>
         </section>
       </RevealOnScroll>
