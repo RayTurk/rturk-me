@@ -6,6 +6,7 @@ import BracketButton from '@/components/interactive/BracketButton';
 import TiltCard from '@/components/interactive/TiltCard';
 import Pipeline from '@/components/home/Pipeline';
 import Stats from '@/components/home/Stats';
+import HowIHelp from '@/components/home/HowIHelp';
 
 export const revalidate = 3600;
 
@@ -39,13 +40,15 @@ export default async function HomePage() {
         </section>
       </RevealOnScroll>
 
+      <HowIHelp />
+
       {/* Under the Hood */}
       <Pipeline />
 
       {/* Writing */}
       <RevealOnScroll>
         <section className="border-t border-hairline py-16">
-          <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">03 — Writing</h2>
+          <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">04 — Writing</h2>
           <ul className="mt-6 divide-y divide-hairline">
             {posts.map((post) => (
               <li key={post.slug}>

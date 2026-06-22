@@ -37,7 +37,7 @@ export default function Pipeline() {
 
   return (
     <section className="border-t border-hairline py-16">
-      <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">02 — Under the Hood</h2>
+      <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">03 — Under the Hood</h2>
       {reduced ? (
         <div className="mt-6 flex flex-wrap items-center gap-3">{stages}</div>
       ) : (
