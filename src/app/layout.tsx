@@ -5,6 +5,7 @@ import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CommandPaletteLoader from '@/components/interactive/CommandPaletteLoader';
+import DotGrid from '@/components/interactive/DotGrid';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { generatePersonSchema, generateWebSiteSchema } from '@/lib/schema';
 import ConsentBanner from '@/components/consent/ConsentBanner';
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${archivo.variable} ${jetbrains.variable} ${clash.variable}`}>
       <body className="font-sans antialiased">
+        <DotGrid />
         <JsonLd data={[generatePersonSchema(), generateWebSiteSchema()]} />
         <CommandPaletteLoader />
         <Header />
