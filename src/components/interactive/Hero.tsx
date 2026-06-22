@@ -1,9 +1,10 @@
 import ParticleField from './ParticleField';
+import AnimatedBlobs from './AnimatedBlobs';
 
 /**
  * Homepage hero. Static gradient + text render server-side (SSG); the canvas
- * hydrates and animates client-side only. Status line uses build-time metadata
- * from Netlify's COMMIT_REF (falls back to "dev").
+ * and blobs hydrate and animate client-side only. Status line uses build-time
+ * metadata from Netlify's COMMIT_REF (falls back to "dev").
  */
 export default function Hero() {
   const commit = (process.env.COMMIT_REF || 'dev').slice(0, 7);
@@ -11,16 +12,7 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden py-24">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-20 right-0 h-72 w-72 rounded-full opacity-60"
-        style={{ background: 'radial-gradient(circle, rgba(34,211,238,0.15), transparent 65%)' }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 rounded-full opacity-40"
-        style={{ background: 'radial-gradient(circle, rgba(167,139,250,0.12), transparent 65%)' }}
-      />
+      <AnimatedBlobs />
       <ParticleField />
 
       <div className="relative">
