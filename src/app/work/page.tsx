@@ -20,6 +20,18 @@ export default async function WorkPage() {
           >
             <p className="font-mono text-xs text-ion">case-study/{project.slug}</p>
             <h2 className="mt-2 font-display text-xl font-semibold">{project.title}</h2>
+            {project.techStacks?.nodes?.length ? (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {project.techStacks.nodes.map((tech) => (
+                  <span
+                    key={tech.slug}
+                    className="rounded border border-hairline px-2 py-0.5 font-mono text-[10px] text-faint"
+                  >
+                    {tech.name}
+                  </span>
+                ))}
+              </div>
+            ) : null}
           </TiltCard>
         ))}
       </div>
