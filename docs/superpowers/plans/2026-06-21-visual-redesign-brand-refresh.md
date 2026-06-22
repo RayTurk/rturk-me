@@ -24,6 +24,9 @@
 **Files:**
 - Modify: `src/app/globals.css:9`
 - Modify: `src/components/interactive/ParticleField.tsx:76,88`
+- Modify: `src/app/opengraph-image.tsx:21,35`
+- Modify: `src/app/work/[slug]/opengraph-image.tsx:26,33`
+- Modify: `src/app/writing/[slug]/opengraph-image.tsx:26,33`
 
 **Interfaces:** None — value-only changes, no new exports or signatures.
 
@@ -56,6 +59,16 @@ And line 88:
 ```
 
 (was `` `rgba(34, 211, 238, ${alpha})` ``)
+
+- [ ] **Step 2b: Recolor the three Open Graph image generators**
+
+These use `next/og`'s `ImageResponse` (Satori), which renders inline styles and cannot reference CSS custom properties — each hardcodes the old cyan as a plain hex literal `#22d3ee`, independently of `globals.css`.
+
+In `src/app/opengraph-image.tsx`, line 21, change `color: '#22d3ee'` to `color: '#ff4200'`; line 35, change `background: '#22d3ee'` to `background: '#ff4200'`.
+
+In `src/app/work/[slug]/opengraph-image.tsx`, line 26, change `color: '#22d3ee'` to `color: '#ff4200'`; line 33, change `background: '#22d3ee'` to `background: '#ff4200'`.
+
+In `src/app/writing/[slug]/opengraph-image.tsx`, line 26, change `color: '#22d3ee'` to `color: '#ff4200'`; line 33, change `background: '#22d3ee'` to `background: '#ff4200'`.
 
 - [ ] **Step 3: Verify no old color literal remains and the suite still passes**
 
