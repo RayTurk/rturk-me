@@ -73,7 +73,7 @@ export default function ParticleField() {
         if (p.y > height) p.y = 0;
         context.beginPath();
         context.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
-        context.fillStyle = 'rgba(34, 211, 238, 0.7)';
+        context.fillStyle = 'rgba(255, 66, 0, 0.7)';
         context.fill();
         for (let j = i + 1; j < particles.length; j++) {
           const q = particles[j];
@@ -85,7 +85,7 @@ export default function ParticleField() {
             context.beginPath();
             context.moveTo(p.x, p.y);
             context.lineTo(q.x, q.y);
-            context.strokeStyle = `rgba(34, 211, 238, ${alpha})`;
+            context.strokeStyle = `rgba(255, 66, 0, ${alpha})`;
             context.stroke();
           }
         }

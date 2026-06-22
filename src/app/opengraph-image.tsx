@@ -18,7 +18,7 @@ export default function OpengraphImage() {
           padding: '72px',
         }}
       >
-        <div style={{ display: 'flex', color: '#22d3ee', fontSize: 28, fontFamily: 'monospace' }}>
+        <div style={{ display: 'flex', color: '#ff4200', fontSize: 28, fontFamily: 'monospace' }}>
           rturk.me
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -32,7 +32,7 @@ export default function OpengraphImage() {
         <div style={{ display: 'flex', color: '#9aa3b5', fontSize: 24 }}>
           Full-Stack Developer · Cleveland, OH
         </div>
-        <div style={{ display: 'flex', position: 'absolute', bottom: 0, left: 0, width: '100%', height: 8, background: '#22d3ee' }} />
+        <div style={{ display: 'flex', position: 'absolute', bottom: 0, left: 0, width: '100%', height: 8, background: '#ff4200' }} />
       </div>
     ),
     { ...size }

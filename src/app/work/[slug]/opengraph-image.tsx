@@ -23,14 +23,14 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           padding: '72px',
         }}
       >
-        <div style={{ display: 'flex', color: '#22d3ee', fontSize: 24, fontFamily: 'monospace' }}>
+        <div style={{ display: 'flex', color: '#ff4200', fontSize: 24, fontFamily: 'monospace' }}>
           rturk.me / work
         </div>
         <div style={{ display: 'flex', color: '#f0f2f8', fontSize: 56, fontWeight: 700, lineHeight: 1.15 }}>
           {title}
         </div>
         <div style={{ display: 'flex', color: '#9aa3b5', fontSize: 22 }}>Case study · Ray Turk</div>
-        <div style={{ display: 'flex', position: 'absolute', bottom: 0, left: 0, width: '100%', height: 8, background: '#22d3ee' }} />
+        <div style={{ display: 'flex', position: 'absolute', bottom: 0, left: 0, width: '100%', height: 8, background: '#ff4200' }} />
       </div>
     ),
     { ...size }
