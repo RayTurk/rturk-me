@@ -41,7 +41,7 @@ No change — `AnimatedBlobs` (full size) stays here. After this change it's the
    - "What I work with" (tech list paragraph)
    - "Beyond the editor" (closing paragraph)
 
-   A `GridScatter` decorative graphic (Part 3) sits alongside the text, plus the section's own large faint `02` background numeral (matching the existing homepage section-number convention already used in `Pipeline`/`HowIHelp`).
+   A `GridScatter` decorative graphic (Part 3) sits alongside the text. The section header uses the same small mono label style already established (`font-mono text-xs uppercase tracking-[0.15em] text-faint`, e.g. `02 — My Story`) — there's no large background numeral anywhere in this codebase today, so this introduces none.
 
 4. **Tech stack ticker** — a `TechTicker` (Part 3) listing: Next.js, React, TypeScript, WordPress, WPGraphQL, PHP, Laravel, Tailwind, MySQL, Git, Docker, AWS, Node.js, Accessibility, Performance, E-commerce.
 
