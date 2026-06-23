@@ -288,6 +288,16 @@ export const FEATURED_TESTIMONIALS_COUNT = 6;
  */
 export const RECENT_POSTS_COUNT = 3;
 
+/**
+ * Profile stats shown on the homepage Stats strip and the About page.
+ */
+export const PROFILE_STATS = [
+  { value: 6, suffix: '+', label: 'years' },
+  { value: 30, suffix: '+', label: 'sites shipped' },
+  { value: 99.9, suffix: '%', label: 'uptime' },
+  { value: 95, suffix: '', label: 'avg lighthouse score' },
+] as const;
+
 // ============================================================================
 // EXTERNAL LINKS
 // ============================================================================
