@@ -24,4 +24,23 @@ describe('AboutPage', () => {
       screen.getByText(/I'm Ray Turk, a full-stack web developer based in Cleveland, Ohio\./)
     ).toBeInTheDocument();
   });
+
+  it('renders the tech ticker, principles, and boundaries list', () => {
+    render(<AboutPage />);
+    expect(screen.getAllByText('WordPress').length).toBeGreaterThan(0);
+    expect(screen.getByText('03 — How I Think About Work')).toBeInTheDocument();
+    expect(screen.getByText('Maintainability over cleverness')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: "What I Don't Do" })).toBeInTheDocument();
+    expect(
+      screen.getByText(/Free, unpaid scope creep/)
+    ).toBeInTheDocument();
+  });
+
+  it('renders the Career Commits timeline and the contact CTA', () => {
+    render(<AboutPage />);
+    expect(screen.getByText('04 — Career Commits')).toBeInTheDocument();
+    expect(screen.getByText('Full-Stack Developer · Neon Goldfish')).toBeInTheDocument();
+    expect(screen.getByText('Have a project or a role in mind? Send a note.')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Get in touch' })).toHaveAttribute('href', '/contact');
+  });
 });
