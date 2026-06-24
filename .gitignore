@@ -55,3 +55,6 @@ next-env.d.ts
 # Claude Code worktrees and scratch state
 /.claude/
 .superpowers/
+
+# Local Netlify folder
+.netlify
