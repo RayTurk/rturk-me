@@ -3,6 +3,7 @@
 import { motion } from 'motion/react';
 import { staggerContainer, fadeUpItem } from '@/lib/animations';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import SectionLabel from '@/components/layout/SectionLabel';
 
 const STAGES = [
   { name: 'WordPress', detail: 'cms.rturk.me' },
@@ -11,10 +12,6 @@ const STAGES = [
   { name: 'Netlify', detail: 'you are here' },
 ];
 
-/**
- * "Under the Hood" — the headless data pipeline as a staggered diagram that
- * draws itself in on scroll. Doubles as the architecture pitch.
- */
 export default function Pipeline() {
   const reduced = useReducedMotion();
 
@@ -37,7 +34,8 @@ export default function Pipeline() {
 
   return (
     <section className="border-t border-hairline py-16">
-      <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">03 — Under the Hood</h2>
+      <SectionLabel label="section.process" number="03" />
+      <h2 className="mt-2 font-display text-2xl font-semibold">Under the Hood</h2>
       {reduced ? (
         <div className="mt-6 flex flex-wrap items-center gap-3">{stages}</div>
       ) : (
@@ -52,9 +50,12 @@ export default function Pipeline() {
         </motion.div>
       )}
       <p className="mt-6 max-w-xl text-sm text-muted">
-        WordPress stays the editing experience Ray knows; everything a visitor
-        touches is a statically-generated, incrementally-revalidated Next.js app.
-        <a href="/colophon" className="ml-1 text-ion underline underline-offset-2 decoration-ion/50 hover:decoration-ion">
+        WordPress stays the editing experience Ray knows; everything a visitor touches is a
+        statically-generated, incrementally-revalidated Next.js app.
+        <a
+          href="/colophon"
+          className="ml-1 text-ion underline underline-offset-2 decoration-ion/50 hover:decoration-ion"
+        >
           How this site is built →
         </a>
       </p>

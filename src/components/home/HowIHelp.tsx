@@ -1,5 +1,6 @@
 import RevealOnScroll from '@/components/animations/RevealOnScroll';
 import IconGlyph from '@/components/icons/IconGlyph';
+import SectionLabel from '@/components/layout/SectionLabel';
 
 const SERVICES = [
   {
@@ -31,7 +32,8 @@ export default function HowIHelp() {
   return (
     <RevealOnScroll>
       <section className="border-t border-hairline py-16">
-        <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">02 — How I Help</h2>
+        <SectionLabel label="section.how-i-help" number="02" />
+        <h2 className="mt-2 font-display text-2xl font-semibold">How I Help</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {SERVICES.map((service) => (
             <div key={service.title} className="rounded-xl border border-hairline bg-panel p-6">
