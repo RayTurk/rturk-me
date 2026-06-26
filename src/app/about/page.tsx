@@ -6,6 +6,7 @@ import IconGlyph from '@/components/icons/IconGlyph';
 import TechTicker from '@/components/about/TechTicker';
 import CareerTimeline from '@/components/about/CareerTimeline';
 import BracketButton from '@/components/interactive/BracketButton';
+import SectionLabel from '@/components/layout/SectionLabel';
 import { PROFILE_STATS } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -100,8 +101,7 @@ export default function AboutPage() {
       <RevealOnScroll>
         <div className="flex flex-wrap items-start justify-between gap-8">
           <div className="max-w-xl">
-            {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
-            <p className="font-mono text-xs text-ion">// index.about</p>
+            <SectionLabel label="page.about" />
             <h1 className="mt-2 font-display text-4xl font-semibold">About</h1>
             <p className="mt-4 text-lg text-muted">
               Full-stack developer in Cleveland, Ohio, building WordPress-powered sites that are
@@ -130,10 +130,12 @@ export default function AboutPage() {
         </div>
       </RevealOnScroll>
 
+      {/* My Story — border-ion accent divider */}
       <RevealOnScroll>
-        <section className="relative overflow-hidden border-t border-hairline py-16">
+        <section className="relative overflow-hidden border-t border-ion py-16">
           <GridScatter />
-          <h2 className="relative font-mono text-xs uppercase tracking-[0.15em] text-faint">02 — My Story</h2>
+          <SectionLabel label="section.my-story" number="02" />
+          <h2 className="mt-2 font-display text-2xl font-semibold">My Story</h2>
           <div className="prose prose-invert relative mt-6">
             <p>
               I&apos;m Ray Turk, a full-stack web developer based in Cleveland, Ohio. I build
@@ -174,7 +176,8 @@ export default function AboutPage() {
 
       <RevealOnScroll>
         <section className="border-t border-hairline py-16">
-          <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">03 — How I Think About Work</h2>
+          <SectionLabel label="section.principles" number="03" />
+          <h2 className="mt-2 font-display text-2xl font-semibold">How I Think About Work</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {PRINCIPLES.map((principle) => (
               <div key={principle.title} className="rounded-xl border border-hairline bg-panel p-6">
@@ -204,7 +207,8 @@ export default function AboutPage() {
 
       <RevealOnScroll>
         <section className="border-t border-hairline py-16">
-          <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">04 — Career Commits</h2>
+          <SectionLabel label="section.career" number="04" />
+          <h2 className="mt-2 font-display text-2xl font-semibold">Career Commits</h2>
           <p className="mt-2 text-muted">A version-controlled history of growth and impact.</p>
           <div className="mt-8">
             <CareerTimeline entries={CAREER_ENTRIES} />
