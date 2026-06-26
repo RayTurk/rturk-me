@@ -14,6 +14,11 @@ describe('Footer', () => {
     expect(screen.getByText('Hosting & Maintenance')).toBeInTheDocument();
   });
 
+  it('renders the tagline', () => {
+    render(<Footer />);
+    expect(screen.getByText('full-stack developer · cleveland, oh')).toBeInTheDocument();
+  });
+
   it('still renders github, linkedin, and colophon links', () => {
     render(<Footer />);
     expect(screen.getByText('github')).toBeInTheDocument();
