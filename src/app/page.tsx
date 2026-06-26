@@ -7,6 +7,7 @@ import TiltCard from '@/components/interactive/TiltCard';
 import Pipeline from '@/components/home/Pipeline';
 import Stats from '@/components/home/Stats';
 import HowIHelp from '@/components/home/HowIHelp';
+import SectionLabel from '@/components/layout/SectionLabel';
 
 export const revalidate = 3600;
 
@@ -18,10 +19,11 @@ export default async function HomePage() {
       <Hero />
       <Stats />
 
-      {/* Selected work */}
+      {/* Selected Work — border-ion accent divider */}
       <RevealOnScroll>
-        <section className="border-t border-hairline py-16">
-          <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">01 — Selected Work</h2>
+        <section className="border-t border-ion py-16">
+          <SectionLabel label="section.selected-work" number="01" />
+          <h2 className="mt-2 font-display text-2xl font-semibold">Selected Work</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {projects.map((project) => (
               <TiltCard
@@ -48,11 +50,15 @@ export default async function HomePage() {
       {/* Writing */}
       <RevealOnScroll>
         <section className="border-t border-hairline py-16">
-          <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">04 — Writing</h2>
+          <SectionLabel label="section.writing" number="04" />
+          <h2 className="mt-2 font-display text-2xl font-semibold">Writing</h2>
           <ul className="mt-6 divide-y divide-hairline">
             {posts.map((post) => (
               <li key={post.slug}>
-                <Link href={`/writing/${post.slug}`} className="flex items-baseline justify-between gap-4 py-4 hover:text-ion">
+                <Link
+                  href={`/writing/${post.slug}`}
+                  className="flex items-baseline justify-between gap-4 py-4 hover:text-ion"
+                >
                   <span>{post.title}</span>
                   <span className="shrink-0 font-mono text-xs text-faint">
                     {post.date ? new Date(post.date).toISOString().slice(0, 10) : ''}
@@ -70,7 +76,9 @@ export default async function HomePage() {
           <div className="flex flex-wrap items-center justify-between gap-6">
             <p className="max-w-md text-muted">
               Full-stack developer at Neon Goldfish, building headless WordPress and Next.js sites.
-              <Link href="/about" className="ml-2 text-ion">more →</Link>
+              <Link href="/about" className="ml-2 text-ion">
+                more →
+              </Link>
             </p>
             <BracketButton href="/contact" className="rounded-lg bg-ion px-5 py-2.5 font-semibold text-void hover:opacity-90">
               Get in touch
