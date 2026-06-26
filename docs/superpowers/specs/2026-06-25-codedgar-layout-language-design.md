@@ -40,13 +40,17 @@ Usage pattern at every section:
 
 The `mt-2` on `<h2>` preserves the visual gap between the label and the heading title.
 
+### Heading replacement rule
+
+Every section currently using the inline monospace pattern — `<h2 className="font-mono text-xs uppercase tracking-[0.15em] text-faint">NN — Section Title</h2>` — is replaced with two elements: a `<SectionLabel />` and a new `<h2 className="mt-2 font-display text-2xl font-semibold">Section Title</h2>`. The inline monospace string was serving double-duty as both label and heading; after this change they are separate elements.
+
 ### Sections updated (label → number)
 
 **Homepage (`src/app/page.tsx`):**
 - Hero: no `SectionLabel` (it's the page intro, not a numbered section)
 - Selected Work: `section.selected-work` → `01`
 - HowIHelp: label moved inside `HowIHelp.tsx`, `section.how-i-help` → `02`
-- Pipeline: label added inside `Pipeline.tsx` if it has a heading, `section.process` → `03`
+- Pipeline: label added inside `Pipeline.tsx` (it has `"03 — Under the Hood"` heading), `section.process` → `03`
 - Writing: `section.writing` → `04`
 - Contact CTA: no `SectionLabel` (it's a CTA block, not a headed section)
 
