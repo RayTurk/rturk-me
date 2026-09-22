@@ -21,7 +21,7 @@ export default function Hero() {
           Ray Turk builds fast, headless, animated web.
         </h1>
         <p className="mt-4 max-w-xl text-lg text-muted">
-          WordPress as the engine, Next.js as the face — with the engineering on display.
+          WordPress as the engine, Next.js as the face, with the engineering on display.
         </p>
         <p className="mt-6 font-mono text-xs text-faint">
           <span className="text-good">●</span> main@{commit} · next 16 · deploy: {context}
