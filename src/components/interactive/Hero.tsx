@@ -24,7 +24,7 @@ export default function Hero() {
           WordPress as the engine, Next.js as the face — with the engineering on display.
         </p>
         <p className="mt-6 font-mono text-xs text-faint">
-          <span className="text-[#4ade80]">●</span> main@{commit} · next 16 · deploy: {context}
+          <span className="text-good">●</span> main@{commit} · next 16 · deploy: {context}
         </p>
       </div>
     </section>

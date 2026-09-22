@@ -107,8 +107,8 @@ export default function AboutPage() {
               Full-stack developer in Cleveland, Ohio, building WordPress-powered sites that are
               fast, maintainable, and actually easy for clients to run.
             </p>
-            <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#4ade80]/30 bg-[#4ade80]/10 px-3 py-1 font-mono text-xs text-[#4ade80]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#4ade80]" />
+            <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-good/30 bg-good/10 px-3 py-1 font-mono text-xs text-good">
+              <span className="h-1.5 w-1.5 rounded-full bg-good" />
               Open to new projects
             </p>
           </div>

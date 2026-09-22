@@ -11,6 +11,8 @@
   --color-signal: #f0f2f8;
   --color-muted: #9aa3b5;
   --color-faint: #808aa0;
+  --color-good: #4ade80;
+  --color-danger: #f87171;
 
   --font-display: var(--font-clash);
   --font-sans: var(--font-archivo);

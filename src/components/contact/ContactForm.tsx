@@ -167,11 +167,11 @@ const ContactForm = () => {
           type="text"
           value={formData.name}
           onChange={handleChange}
-          className={`${inputClass}${errors.name ? ' border-red-500/60' : ''}`}
+          className={`${inputClass}${errors.name ? ' border-danger/60' : ''}`}
           placeholder="Ray Turk"
         />
         {errors.name && (
-          <p className="text-xs text-red-400">{errors.name}</p>
+          <p className="text-xs text-danger">{errors.name}</p>
         )}
       </div>
 
@@ -186,11 +186,11 @@ const ContactForm = () => {
           type="email"
           value={formData.email}
           onChange={handleChange}
-          className={`${inputClass}${errors.email ? ' border-red-500/60' : ''}`}
+          className={`${inputClass}${errors.email ? ' border-danger/60' : ''}`}
           placeholder="your@email.com"
         />
         {errors.email && (
-          <p className="text-xs text-red-400">{errors.email}</p>
+          <p className="text-xs text-danger">{errors.email}</p>
         )}
       </div>
 
@@ -204,7 +204,7 @@ const ContactForm = () => {
           name="service"
           value={formData.service}
           onChange={handleChange}
-          className={`${inputClass} appearance-none cursor-pointer${errors.service ? ' border-red-500/60' : ''}`}
+          className={`${inputClass} appearance-none cursor-pointer${errors.service ? ' border-danger/60' : ''}`}
         >
           <option value="">Select a service...</option>
           {serviceOptions.map((option) => (
@@ -214,7 +214,7 @@ const ContactForm = () => {
           ))}
         </select>
         {errors.service && (
-          <p className="text-xs text-red-400">{errors.service}</p>
+          <p className="text-xs text-danger">{errors.service}</p>
         )}
       </div>
 
@@ -228,7 +228,7 @@ const ContactForm = () => {
           name="budget"
           value={formData.budget}
           onChange={handleChange}
-          className={`${inputClass} appearance-none cursor-pointer${errors.budget ? ' border-red-500/60' : ''}`}
+          className={`${inputClass} appearance-none cursor-pointer${errors.budget ? ' border-danger/60' : ''}`}
         >
           <option value="">Select a range...</option>
           {budgetOptions.map((option) => (
@@ -238,7 +238,7 @@ const ContactForm = () => {
           ))}
         </select>
         {errors.budget && (
-          <p className="text-xs text-red-400">{errors.budget}</p>
+          <p className="text-xs text-danger">{errors.budget}</p>
         )}
       </div>
 
@@ -253,11 +253,11 @@ const ContactForm = () => {
           value={formData.message}
           onChange={handleChange}
           rows={5}
-          className={`${inputClass} resize-none${errors.message ? ' border-red-500/60' : ''}`}
+          className={`${inputClass} resize-none${errors.message ? ' border-danger/60' : ''}`}
           placeholder="Tell me about your project..."
         />
         {errors.message && (
-          <p className="text-xs text-red-400">{errors.message}</p>
+          <p className="text-xs text-danger">{errors.message}</p>
         )}
       </div>
 
@@ -268,8 +268,8 @@ const ContactForm = () => {
         </div>
       )}
       {formState.status === 'error' && (
-        <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3">
-          <p className="text-sm text-red-400">{formState.message}</p>
+        <div className="rounded-lg border border-danger/30 bg-danger/10 px-4 py-3">
+          <p className="text-sm text-danger">{formState.message}</p>
         </div>
       )}
 
