@@ -102,7 +102,10 @@ export async function getFeaturedProjects(): Promise<Project[]> {
       .slice(0, FEATURED_PROJECTS_COUNT);
 
     if (featured.length > 0) return featured;
-    // CMS returned nothing — fall back to static featured projects
+    // Nothing marked isFeatured in WP yet — show real recent projects instead
+    // of demo data (whose slugs don't match real CMS slugs and 404).
+    if (allProjects.length > 0) return allProjects.slice(0, FEATURED_PROJECTS_COUNT);
+    // CMS returned no projects at all — fall back to static featured projects
     return STATIC_FEATURED_PROJECTS.slice(0, FEATURED_PROJECTS_COUNT);
   } catch (error) {
     console.error('Error fetching featured projects. Using static fallback:', error);
