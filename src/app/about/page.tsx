@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import RevealOnScroll from '@/components/animations/RevealOnScroll';
 import AnimatedCounter from '@/components/animations/AnimatedCounter';
 import GridScatter from '@/components/about/GridScatter';
-import IconGlyph from '@/components/icons/IconGlyph';
+import ServiceIcon from '@/components/icons/ServiceIcon';
 import TechTicker from '@/components/about/TechTicker';
 import CareerTimeline from '@/components/about/CareerTimeline';
 import BracketButton from '@/components/interactive/BracketButton';
@@ -22,24 +22,24 @@ const TECH_TICKER_ITEMS = [
 
 const PRINCIPLES = [
   {
-    icon: 'cross' as const,
+    icon: 'check' as const,
     title: 'Maintainability over cleverness',
     description:
       'Code the next developer (including future-me) can actually read and extend, not just code that works today.',
   },
   {
-    icon: 'dots' as const,
+    icon: 'unlock' as const,
     title: 'Client empowerment over gatekeeping',
     description:
       'Give non-technical clients real control over their own content (custom shortcodes, flexible layouts) instead of making every change depend on me.',
   },
   {
-    icon: 'square' as const,
+    icon: 'gauge' as const,
     title: 'Performance and reliability are features, not afterthoughts',
     description: 'Load times, uptime, and Core Web Vitals are deliverables I measure, not nice-to-haves.',
   },
   {
-    icon: 'scatter' as const,
+    icon: 'search' as const,
     title: 'Diagnose before you patch',
     description: 'Dig into the actual root cause methodically rather than shotgunning fixes and hoping.',
   },
@@ -181,7 +181,7 @@ export default function AboutPage() {
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {PRINCIPLES.map((principle) => (
               <div key={principle.title} className="rounded-xl border border-hairline bg-panel p-6">
-                <IconGlyph variant={principle.icon} className="text-ion" />
+                <ServiceIcon variant={principle.icon} className="text-ion" />
                 <h3 className="mt-2 font-display text-lg font-semibold text-signal">{principle.title}</h3>
                 <p className="mt-2 text-sm text-muted">{principle.description}</p>
               </div>
