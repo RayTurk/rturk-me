@@ -9,16 +9,18 @@ interface RevealOnScrollProps {
   className?: string;
   /** When true, children are wrapped individually for a stagger effect. */
   stagger?: boolean;
+  /** Skip the reveal animation for content that's already above the fold on load. */
+  immediate?: boolean;
 }
 
 /**
  * Reveals content as it scrolls into view. Honors reduced motion by rendering
  * children statically (no transform/opacity animation).
  */
-export default function RevealOnScroll({ children, className, stagger = false }: RevealOnScrollProps) {
+export default function RevealOnScroll({ children, className, stagger = false, immediate = false }: RevealOnScrollProps) {
   const reduced = useReducedMotion();
 
-  if (reduced) {
+  if (reduced || immediate) {
     return <div className={className}>{children}</div>;
   }
 

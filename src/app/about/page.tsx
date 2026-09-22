@@ -98,7 +98,7 @@ const CAREER_ENTRIES = [
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
-      <RevealOnScroll>
+      <RevealOnScroll immediate>
         <div className="flex flex-wrap items-start justify-between gap-8">
           <div className="max-w-xl">
             <SectionLabel label="page.about" />
@@ -122,7 +122,7 @@ export default function AboutPage() {
         </div>
       </RevealOnScroll>
 
-      <RevealOnScroll>
+      <RevealOnScroll immediate>
         <div className="mt-10 grid grid-cols-2 gap-8 border-t border-hairline py-8 md:grid-cols-4 md:divide-x md:divide-hairline">
           {PROFILE_STATS.map((stat) => (
             <AnimatedCounter key={stat.label} value={stat.value} suffix={stat.suffix} label={stat.label} />

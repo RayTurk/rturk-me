@@ -5,7 +5,7 @@ import { PROFILE_STATS } from '@/lib/constants';
 /** Quick credibility strip directly under the hero — no section number, matching the hero's own unnumbered treatment. */
 export default function Stats() {
   return (
-    <RevealOnScroll>
+    <RevealOnScroll immediate>
       <section className="border-t border-hairline py-12">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:divide-x md:divide-hairline">
           {PROFILE_STATS.map((stat) => (

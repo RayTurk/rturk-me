@@ -7,4 +7,12 @@ describe('RevealOnScroll', () => {
     render(<RevealOnScroll><p>hello world</p></RevealOnScroll>);
     expect(screen.getByText('hello world')).toBeInTheDocument();
   });
+
+  it('renders children immediately, without animation, when immediate is set', () => {
+    const { container } = render(
+      <RevealOnScroll immediate><p>above the fold</p></RevealOnScroll>
+    );
+    expect(screen.getByText('above the fold')).toBeInTheDocument();
+    expect(container.querySelector('[style*="opacity"]')).toBeNull();
+  });
 });
